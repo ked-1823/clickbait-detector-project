@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clickbait Detector</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        /* Form styling */
+        form {
+            display: block;
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            max-width: 500px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #d9534f;
+            margin-top: 20px;
+            word-wrap: break-word;
+        }
+
+        /* Info section */
+        .info-box {
+            display: block;
+            text-align: left;
+            background-color: #fff;
+            padding: 25px 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px auto 0 auto;
+        }
+
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 700px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            form, .info-box {
+                padding: 20px;
+            }
+
+            input[type="text"] {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Clickbait Detector</h1>
+    
+    <form method="POST">
+        <input type="text" name="headline" placeholder="Enter a headline" value="{{ user_input }}" required>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+
+    <!-- Info Section -->
+    <div class="info-box">
+        <h3>What is Clickbait?</h3>
+        <p>Clickbait headlines are designed to grab your attention and make you click, often using exaggerated or sensational language.</p>
+        <p><strong>Example:</strong> "You Won’t Believe What Happened Next!"</p>
+
+        <h3>What is Non-Clickbait?</h3>
+        <p>Non-clickbait headlines are straightforward, informative, and accurately describe the content without trying to trick you.</p>
+        <p><strong>Example:</strong> "NASA Releases New Images of Mars Rover Landing"</p>
+    </div>
+</body>
+</html>
